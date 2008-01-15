@@ -52,6 +52,11 @@ sub get_method_map {
             ?  'MooseX::Async::Meta::Method::State'
             : $method_metaclass;
 
+		# TODO: Refactor this to add the method to the events array 
+		#       this should add the on_ method handling back in as well
+		#       as the magic START|STOP|CHILD|PARENT|DEFAULT stuff
+		#       which may need moving to MX::POE
+
         my $code = $self->get_package_symbol( '&' . $symbol );
 
         next

@@ -2,14 +2,19 @@
 use inc::Module::Install;
 
 # Define metadata
-name 'MooseX-POE';
-all_from 'lib/MooseX/POE.pm';
+name 'MooseX-Async';
+all_from 'lib/MooseX/Async.pm';
 
 # Specific dependencies
-requires 'Moose'         => '0.26';
-requires 'POE'           => '0.9999';
-requires 'Sub::Name'     => undef;
-requires 'Sub::Exporter' => undef;
+requires 'Moose' => '0.26';
+
+feature 'MooseX::POE',
+  -default      => 1,
+  'MooseX::POE' => '0.03';
+
+feature 'MooseX::Coro',
+  -default       => 0,
+  'MooseX::Coro' => undef;
 
 build_requires 'Test::More' => '0.42';
 

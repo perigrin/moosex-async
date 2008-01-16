@@ -9,12 +9,12 @@ all_from 'lib/MooseX/Async.pm';
 requires 'Moose' => '0.26';
 
 feature 'MooseX::POE',
-  -default      => 1,
+  -default      => 0,
   'MooseX::POE' => '0.03';
 
-feature 'MooseX::Coro',
-  -default       => 0,
-  'MooseX::Coro' => undef;
+# feature 'MooseX::Coro',
+#   -default       => 0,
+#   'MooseX::Coro' => undef;
 
 build_requires 'Test::More' => '0.42';
 

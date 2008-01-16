@@ -1,12 +1,9 @@
-Revision history for MooseX-POE
+Revision history for MooseX-Async
 
-0.0.3 ???
-	+fix Synopsis code to close bug #31432 (sproingie)
-	
-0.0.2 2007-10-23
-	+fix POD
-	+fix tests
+0.02  2008-01-16
+	(Features identical to 0.01)
+	- Fix circular dependency with MX::POE
 
-0.0.1  Thu Oct 11 16:58:27 2007
+0.01  2008-01-15
 	+Initial release.
 

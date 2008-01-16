@@ -1,5 +1,8 @@
 Revision history for MooseX-Async
 
+0.03  ???
+	
+
 0.02  2008-01-16
 	(Features identical to 0.01)
 	- Fix circular dependency with MX::POE

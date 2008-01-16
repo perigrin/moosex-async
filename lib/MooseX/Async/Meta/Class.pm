@@ -8,14 +8,24 @@ use B 'svref_2object';
 extends qw(Moose::Meta::Class);
 
 has events => (
-    accessor   => 'get_events',
+    reader     => 'get_events',
     metaclass  => 'Collection::Array',
     isa        => 'ArrayRef',
-    is         => 'ro',
     auto_deref => 1,
-    default    => sub { [qw(START STOP)] },
+    lazy_build => 1,
+    builder    => 'default_events',
     provides   => { push => 'add_event', }
 );
+
+sub default_events {
+    return [qw(START STOP)];
+}
+
+sub get_state_method_name {
+    my ( $self, $name ) = @_;
+    return $name if $self->has_method($name);
+    return undef;
+}
 
 sub add_state_method {
     my ( $self, $name, $method ) = @_;
@@ -27,68 +37,6 @@ sub add_state_method {
 
     $self->add_event($name);
     $self->add_method( $name => $method );
-}
-
-#XXX: Ick we had to copy the entire thing from Class::MOP::Class
-#     because there was no easy way to subclass it
-sub get_method_map {
-    my $self = shift;
-
-    if (defined $self->{'$!_package_cache_flag'} && 
-                $self->{'$!_package_cache_flag'} == Class::MOP::check_package_cache_flag($self->name)) {
-        return $self->{'%!methods'};
-    }
-    
-    my $map  = $self->{'%!methods'};
-
-    my $class_name       = $self->name;
-    my $method_metaclass = $self->method_metaclass;
-
-    foreach my $symbol ( $self->list_all_package_symbols('CODE') ) {
-
-        # if the method starts with 'on_' we want our custom metaclass
-        my $this_method_metaclass =
-          ($symbol =~ /^on_|^(?:START|STOP|CHILD|PARENT|DEFAULT)$/)
-            ?  'MooseX::Async::Meta::Method::State'
-            : $method_metaclass;
-
-		# TODO: Refactor this to add the method to the events array 
-		#       this should add the on_ method handling back in as well
-		#       as the magic START|STOP|CHILD|PARENT|DEFAULT stuff
-		#       which may need moving to MX::POE
-
-        my $code = $self->get_package_symbol( '&' . $symbol );
-
-        next
-          if exists $map->{$symbol}
-              && defined $map->{$symbol}
-              && $map->{$symbol}->body == $code;
-
-        my ($pkg, $name) = Class::MOP::get_code_info($code);
-
-        if ($pkg->can('meta')
-            # NOTE:
-            # we don't know what ->meta we are calling
-            # here, so we need to be careful cause it
-            # just might blow up at us, or just complain
-            # loudly (in the case of Curses.pm) so we
-            # just be a little overly cautious here.
-            # - SL
-            && eval { no warnings; blessed($pkg->meta) }
-            && $pkg->meta->isa('Moose::Meta::Role')) {
-            #my $role = $pkg->meta->name;
-            #next unless $self->does_role($role);
-        }
-        else {
-            next if ($pkg  || '') ne $class_name &&
-                    ($name || '') ne '__ANON__';
-
-        }
-
-        $map->{$symbol} = $this_method_metaclass->wrap($code);
-    }
-
-    return $map;
 }
 
 no Moose;

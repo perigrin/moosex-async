@@ -45,15 +45,15 @@ __END__
 
 =head1 NAME
 
-MooseX::POE::Meta::Class - A Class Metaclass for MooseX::POE
+MooseX::Async::Meta::Class - A Class Metaclass for MooseX::Async
 
 =head1 SYNOPSIS
 
-    metaclass 'MooseX::POE::Meta::Class';
+    metaclass 'MooseX::Async::Meta::Class';
   
 =head1 DESCRIPTION
 
-A metaclass for MooseX::POE. This module is only of use to developers 
+A metaclass for MooseX::Async. This module is only of use to developers 
 so there is no user documentation provided.
 
 =head1 METHODS
@@ -80,7 +80,7 @@ The metaclass accessor provided by C<Moose::Object>.
     the module is part of the standard Perl distribution, part of the
     module's distribution, or must be installed separately. ]
 
-L<Moose::Meta::Class>, L<MooseX::POE::Meta::Instance>
+L<Moose::Meta::Class>, L<MooseX::Async::Meta::Instance>
 
 
 =head1 INCOMPATIBILITIES

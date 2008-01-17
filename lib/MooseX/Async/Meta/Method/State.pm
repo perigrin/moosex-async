@@ -9,15 +9,15 @@ __END__
 
 =head1 NAME
 
-MooseX::POE::Meta::Method::State - A Method Metaclass for MooseX::POE
+MooseX::Async::Meta::Method::State - A Method Metaclass for MooseX::Async
 
 =head1 SYNOPSIS
 
-    method_metaclass 'MooseX::POE::Meta::Class';
+    method_metaclass 'MooseX::Async::Meta::Class';
   
 =head1 DESCRIPTION
 
-A metaclass for MooseX::POE. This module is only of use to developers 
+A metaclass for MooseX::Async. This module is only of use to developers 
 so there is no user documentation provided.
 
 =head1 METHODS
@@ -38,7 +38,7 @@ The metaclass accessor provided by C<Moose::Object>.
     the module is part of the standard Perl distribution, part of the
     module's distribution, or must be installed separately. ]
 
-L<Moose::Meta::Class>, L<MooseX::POE::Meta::Instance>
+L<Moose::Meta::Class>, L<MooseX::Async::Meta::Instance>
 
 
 =head1 INCOMPATIBILITIES
@@ -67,7 +67,7 @@ None reported.
 No bugs have been reported.
 
 Please report any bugs or feature requests to
-C<bug-moose-poe-object@rt.cpan.org>, or through the web interface at
+C<bug-moose-async@rt.cpan.org>, or through the web interface at
 L<http://rt.cpan.org>.
 
 

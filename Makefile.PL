@@ -6,7 +6,8 @@ name 'MooseX-Async';
 all_from 'lib/MooseX/Async.pm';
 
 # Specific dependencies
-requires 'Moose' => '0.26';
+requires 'Moose'                    => '0.26';
+requires 'MooseX::AttributeHelpers' => undef;
 
 feature 'MooseX::POE',
   -default      => 0,

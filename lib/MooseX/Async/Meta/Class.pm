@@ -1,9 +1,7 @@
 package MooseX::Async::Meta::Class;
-use strict;
 use Moose;
 use MooseX::Async::Meta::Method::State;
 use MooseX::AttributeHelpers;
-use B 'svref_2object';
 
 extends qw(Moose::Meta::Class);
 
@@ -38,6 +36,14 @@ sub add_state_method {
     $self->add_event($name);
     $self->add_method( $name => $method );
 }
+
+after add_role => sub {
+    my ( $self, $role ) = @_;
+
+    if ( $role->isa("MooseX::Async::Meta::Role") ) {
+        $self->add_event($role->get_events);
+    }
+};
 
 no Moose;
 1;

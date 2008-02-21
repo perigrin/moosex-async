@@ -1,5 +1,9 @@
 Revision history for MooseX-Async
 
+0.04  2008-02-21
+    + NEW Role Metaclass (nothingmuch)
+    - Updated Class Metaclass to support Roles (nothingmuch)
+
 0.03  2008-01-17
 	(Features Identical to 0.01)
 	- Fix documentation

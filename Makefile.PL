@@ -7,7 +7,7 @@ all_from 'lib/MooseX/Async.pm';
 
 # Specific dependencies
 requires 'Moose'                    => '0.26';
-requires 'MooseX::AttributeHelpers' => undef;
+requires 'MooseX::AttributeHelpers' => '0.09'; # tokuhirom++
 
 feature 'MooseX::POE',
   -default      => 0,

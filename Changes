@@ -1,5 +1,9 @@
 Revision history for MooseX-Async
 
+0.05  2009-06-05
+    - Fix Makefile.PL to depend on 0.09 of MX::AttributeHelpers or above (tokuhirom)
+    - Finaly fix the cyclical deps on MX::POE
+
 0.04  2008-02-21
     + NEW Role Metaclass (nothingmuch)
     - Updated Class Metaclass to support Roles (nothingmuch)

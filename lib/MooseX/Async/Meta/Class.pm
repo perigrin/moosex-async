@@ -16,7 +16,7 @@ has events => (
 );
 
 sub default_events {
-    return [qw(START STOP)];
+    return [];
 }
 
 sub get_state_method_name {

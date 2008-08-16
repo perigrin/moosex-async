@@ -6,12 +6,8 @@ name 'MooseX-Async';
 all_from 'lib/MooseX/Async.pm';
 
 # Specific dependencies
-requires 'Moose'                    => '0.26';
-requires 'MooseX::AttributeHelpers' => '0.09'; # tokuhirom++
-
-feature 'MooseX::POE',
-  -default      => 0,
-  'MooseX::POE' => '0.03';
+requires 'Moose'                    => '0.56';
+requires 'MooseX::AttributeHelpers' => '0.13'; # tokuhirom++
 
 # feature 'MooseX::Coro',
 #   -default       => 0,
@@ -35,5 +31,4 @@ if ( $ENV{DEVELOPER_TESTS} ) {
     write_test( '000_kwalitee' => kwalitee );
 }
 
-auto_install;
 WriteAll;
